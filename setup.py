@@ -53,8 +53,8 @@ setup (
     description='Python module for interfacing with BLE devices through Bluez',
     author='Ian Harvey',
     author_email='website-contact@fenditton.org',
-    url='https://github.com/IanHarvey/bluepy',
-    download_url='https://github.com/IanHarvey/bluepy/tarball/v/1.0.5',
+    url='https://github.com/mectors/bluepy',
+    download_url='https://github.com/mectors/bluepy/tarball/v/1.0.5',
     keywords=[ 'Bluetooth', 'Bluetooth Smart', 'BLE', 'Bluetooth Low Energy' ],
     classifiers=[
         'Programming Language :: Python :: 2.7',
