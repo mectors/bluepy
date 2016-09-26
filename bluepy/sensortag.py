@@ -384,10 +384,10 @@ class KeypressDelegate(DefaultDelegate):
         self.lastVal = val
 
     def onButtonUp(self, but):
-        print ( "** " + self._button_desc[but] + " UP")
+        print ( self._button_desc[but] + ": UP,")
 
     def onButtonDown(self, but):
-        print ( "** " + self._button_desc[but] + " DOWN")
+        print ( self._button_desc[but] + ": DOWN,")
 
 def main():
     import time
@@ -413,7 +413,6 @@ def main():
 
     arg = parser.parse_args(sys.argv[1:])
 
-    print('Connecting to ' + arg.host)
     tag = SensorTag(arg.host)
 
     # Enabling selected sensors
@@ -443,23 +442,25 @@ def main():
 
     counter=1
     while True:
+       print('{')
        if arg.temperature or arg.all:
-           print('Temp: ', tag.IRtemperature.read())
+           print('Temp: ', tag.IRtemperature.read() , ',')
        if arg.humidity or arg.all:
-           print("Humidity: ", tag.humidity.read())
+           print("Humidity: ", tag.humidity.read() , ',')
        if arg.barometer or arg.all:
-           print("Barometer: ", tag.barometer.read())
+           print("Barometer: ", tag.barometer.read() , ',')
        if arg.accelerometer or arg.all:
-           print("Accelerometer: ", tag.accelerometer.read())
+           print("Accelerometer: ", tag.accelerometer.read() , ',')
        if arg.magnetometer or arg.all:
-           print("Magnetometer: ", tag.magnetometer.read())
+           print("Magnetometer: ", tag.magnetometer.read() , ',')
        if arg.gyroscope or arg.all:
-           print("Gyroscope: ", tag.gyroscope.read())
+           print("Gyroscope: ", tag.gyroscope.read() , ',')
        if (arg.light or arg.all) and tag.lightmeter is not None:
-           print("Light: ", tag.lightmeter.read())
+           print("Light: ", tag.lightmeter.read() , ',')
        if counter >= arg.count and arg.count != 0:
            break
        counter += 1
+       print('host:' + arg.host + '}')
        tag.waitForNotifications(arg.t)
 
     tag.disconnect()
